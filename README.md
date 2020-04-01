@@ -1,4 +1,4 @@
-# lit-element webcomponent starter JS (Bootstrap)
+# lit-element webcomponent starter JS (+Bootstrap)
 
 ## intro
 This is a simple starter of a webcomponent builded with lit-element library and webpack bundler.
