@@ -19,7 +19,9 @@
             }
 
         WebComponents.waitFor(async () => {
-            await import('./css/style.loader.js');
+            const {loaderCss} = await import('./css/style.loader.js');
+            window.externalStyles=[...await loaderCss]
+
             await import('./main.js');
         });
     </script>

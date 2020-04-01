@@ -1,6 +1,13 @@
-const fileUrl = 'css/bootstrap.min.css' 
+const fileUrlS = ['css/bootstrap.min.css'] 
+
 window.externalStyles = [];
 
-fetch(fileUrl)
+const loadCss = (url)=>new Promise((resolve,reject)=>{
+   fetch(url)
    .then( r => r.text() )
-   .then( t => window.externalStyles.push(t.replace('body{', ':host{')))
+   .then( t => resolve(t))
+})
+
+const cssPromises = fileUrlS.map((url)=>loadCss(url))
+
+export const loaderCss = Promise.all(cssPromises)
