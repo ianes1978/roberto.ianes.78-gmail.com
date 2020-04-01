@@ -1,13 +1,17 @@
-const fileUrlS = ['css/bootstrap.min.css'] 
+const fileUrls = ['./css/bootstrap.css'] 
 
 window.externalStyles = [];
 
 const loadCss = (url)=>new Promise((resolve,reject)=>{
    fetch(url)
    .then( r => r.text() )
-   .then( t => resolve(t))
+   .then( t => {
+      t = t.replace(/body {/g,":host{")
+      t = t.replace(/@import/g,"/@import")
+      resolve(t)
+   })
 })
 
-const cssPromises = fileUrlS.map((url)=>loadCss(url))
+const cssPromises = fileUrls.map((url)=>loadCss(url))
 
 export const loaderCss = Promise.all(cssPromises)

@@ -12,7 +12,6 @@ A component that load from external css a global style.
 **But preserve the shadowdom for scoped style**.
 I think can be usefull to create a library of webcomponent that have to ereditate the global style.
 *webcomponents-loader.js* is a polyfill for webcomponents
-**( Warning no suport css import eg. @import url("");)**
 
 *To boostrap it, the css files must be loaded before your webcomponent library:*
 ```
@@ -39,17 +38,21 @@ I think can be usefull to create a library of webcomponent that have to ereditat
 
 ## style.loader.js
 ```
-const fileUrlS = ['css/bootstrap.min.css'] 
+const fileUrls = ['./css/bootstrap.css'] 
 
 window.externalStyles = [];
 
 const loadCss = (url)=>new Promise((resolve,reject)=>{
    fetch(url)
    .then( r => r.text() )
-   .then( t => resolve(t))
+   .then( t => {
+      t = t.replace(/body {/g,":host{")
+      t = t.replace(/@import/g,"/@import")
+      resolve(t)
+   })
 })
 
-const cssPromises = fileUrlS.map((url)=>loadCss(url))
+const cssPromises = fileUrls.map((url)=>loadCss(url))
 
 export const loaderCss = Promise.all(cssPromises)
 ```
