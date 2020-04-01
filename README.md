@@ -13,7 +13,8 @@ A component that load from external css a global style.
 I think can be usefull to create a library of webcomponent that have to ereditate the global style.
 *webcomponents-loader.js* is a polyfill for webcomponents
 
-*To boostrap it, the css files must be loaded before your webcomponent library:*
+*To boostrap it, the css files must be loaded before your webcomponent library*
+*in index.html:*
 ```
 <!-- Load polyfills -->
     <script src="libs/webcomponents-loader.js" defer> </script>
