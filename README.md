@@ -37,3 +37,20 @@ fetch(fileUrl)
    .then( t => window.externalStyles.push(t.replace('body{', ':host{')))
 ```
 It simple save in a Array the files css (and replace body tag with :host). you can upload as many files css as you want
+
+# Use it
+### Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm start
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
