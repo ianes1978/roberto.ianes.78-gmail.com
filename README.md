@@ -14,8 +14,10 @@ I think can be usefull to create a library of webcomponent that have to ereditat
 *webcomponents-loader.js* is a polyfill for webcomponents
 
 *To boostrap it, the css files must be loaded before your webcomponent library:*
-```    <!-- Load polyfills -->
-        <script src="libs/webcomponents-loader.js" defer> </script>
+    <!-- Load polyfills -->
+    <script src="libs/webcomponents-loader.js" defer> </script>
+
+    <!-- Load component when polyfills are definitely ready -->
     <script type="module">
         // Take care of cases in which the browser runs this
         // script before it has finished running 
@@ -34,12 +36,19 @@ I think can be usefull to create a library of webcomponent that have to ereditat
 ```
 ## style.loader.js
 ```
-const fileUrl = 'css/bootstrap.min.css' 
+const fileUrlS = ['css/bootstrap.min.css'] 
+
 window.externalStyles = [];
 
-fetch(fileUrl)
+const loadCss = (url)=>new Promise((resolve,reject)=>{
+   fetch(url)
    .then( r => r.text() )
-   .then( t => window.externalStyles.push(t.replace('body{', ':host{')))
+   .then( t => resolve(t))
+})
+
+const cssPromises = fileUrlS.map((url)=>loadCss(url))
+
+export const loaderCss = Promise.all(cssPromises)
 ```
 It simple save in a Array the files css (and replace body tag with :host). you can upload as many files css as you want
 
