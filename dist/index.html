@@ -8,7 +8,6 @@
 
     <!-- Load polyfills -->
     <script src="libs/webcomponents-loader.js" defer> </script>
-    <!-- <script src="content/style.loader.js" defer> </script> -->
 
     <!-- Load component when polyfills are definitely ready -->
     <script type="module">
@@ -17,7 +16,7 @@
         // webcomponents-loader.js (e.g. Firefox script execution order)
         window.WebComponents = window.WebComponents || {
             waitFor(cb) { addEventListener('WebComponentsReady', cb) }
-        }
+            }
 
         WebComponents.waitFor(async () => {
             await import('./css/style.loader.js');
