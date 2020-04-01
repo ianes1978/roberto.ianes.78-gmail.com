@@ -8,9 +8,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-        // new CopyPlugin([
-        //     { from: './node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js', to: 'libs' },
-        // ]),
+        new CopyPlugin([
+            { from: './node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js', to: 'libs' },
+            { from: 'src/css', to: 'css/' },
+        ]),
       ],
 
 };
