@@ -33,7 +33,7 @@ class BsComponent extends LitElement {
   }
   render() {
     return html`
-    <h3>Webcomponent with externally loaded style (Bootstrap)</h3>
+    <h3>Webcomponent with external style (Bootstrap)</h3>
       <div class="card" >
         <div class="card-body">
         <button type="button" class="btn btn-primary">Primary</button>

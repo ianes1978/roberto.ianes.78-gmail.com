@@ -2,7 +2,7 @@
 
 ## intro
 This is a simple starter of a webcomponent builded with lit-element library and webpack bundler.
-![screen](./images/screenshot.png | width=100)
+![screen](images/screenshot.png)
 ##first-component
 example of naked webcomponent
 
