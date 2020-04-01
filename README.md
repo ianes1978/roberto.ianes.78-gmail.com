@@ -27,3 +27,13 @@ I think can be usefull to create a library of webcomponent that have to reditate
         });
         </script>
 ```
+## style.loader.js
+```
+const fileUrl = 'css/bootstrap.min.css' 
+window.externalStyles = [];
+
+fetch(fileUrl)
+   .then( r => r.text() )
+   .then( t => window.externalStyles.push(t.replace('body{', ':host{')))
+```
+It simple save in a Array the files css. you can upload as many files css as you want
