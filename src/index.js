@@ -1,6 +1,8 @@
 
 import { LitElement, html } from 'lit-element';
 import './components/first-component';
+import './components/bs-component';
+
 
 class MyApp extends LitElement {
   static get properties() {
@@ -13,8 +15,9 @@ class MyApp extends LitElement {
   }
   render() {
     return html`
-      <h3>First component:</h3>
       <first-component></first-component>
+
+      <bs-component></bs-component>
     `;
   }
 }
