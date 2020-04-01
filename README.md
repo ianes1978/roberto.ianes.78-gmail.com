@@ -41,6 +41,8 @@ It simple save in a Array the files css (and replace body tag with :host). you c
 # Use it
 ### Project setup
 ```
+git clone https://github.com/ianes1978/lit-element-webpack-starter.git
+
 npm install
 ```
 
