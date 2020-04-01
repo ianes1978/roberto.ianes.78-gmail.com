@@ -10,7 +10,7 @@ example of naked webcomponent
 ## bs-component
 A component that load from external css a global style.
 **But preserve the shadowdom for scoped style**.
-I think can be usefull to create a library of webcomponent that have to reditate the global style.
+I think can be usefull to create a library of webcomponent that have to ereditate the global style.
 *webcomponents-loader.js* is a polyfill for webcomponents
 
 *To boostrap it, the css files must be loaded before your webcomponent library:*
