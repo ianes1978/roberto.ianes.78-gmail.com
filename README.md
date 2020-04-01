@@ -46,8 +46,8 @@ const loadCss = (url)=>new Promise((resolve,reject)=>{
    fetch(url)
    .then( r => r.text() )
    .then( t => {
-      t = t.replace(/body {/g,":host{")
-      t = t.replace(/@import/g,"/@import")
+      t = t.replace(/html {/g,":host {")
+      // t = t.replace(/@import/g,"/@import")
       resolve(t)
    })
 })
