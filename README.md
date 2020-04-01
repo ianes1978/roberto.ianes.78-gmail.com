@@ -16,16 +16,21 @@ I think can be usefull to create a library of webcomponent that have to ereditat
 *To boostrap it, the css files must be loaded before your webcomponent library:*
 ```    <!-- Load polyfills -->
         <script src="libs/webcomponents-loader.js" defer> </script>
-       <script type="module">
+    <script type="module">
+        // Take care of cases in which the browser runs this
+        // script before it has finished running 
+        // webcomponents-loader.js (e.g. Firefox script execution order)
         window.WebComponents = window.WebComponents || {
             waitFor(cb) { addEventListener('WebComponentsReady', cb) }
-        }
+            }
 
         WebComponents.waitFor(async () => {
-            await import('./css/style.loader.js');
+            const {loaderCss} = await import('./css/style.loader.js');
+            window.externalStyles=[...await loaderCss]
+
             await import('./main.js');
         });
-        </script>
+    </script>
 ```
 ## style.loader.js
 ```
