@@ -4,6 +4,7 @@ import {externalStyles} from '../tools/style.loader'
 
 
 
+
 class BsComponent extends LitElement {
   static get styles() {
     return [
@@ -57,4 +58,4 @@ class BsComponent extends LitElement {
   }
 }
 
-customElements.define('bs-component', BsComponent);
+customElements.define('css-component', BsComponent);

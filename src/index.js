@@ -2,6 +2,7 @@
 import { LitElement, html } from 'lit-element';
 import './components/first-component';
 import './components/bs-component';
+import './components/css-component';
 
 
 class MyApp extends LitElement {
@@ -18,6 +19,8 @@ class MyApp extends LitElement {
       <first-component></first-component>
 
       <bs-component></bs-component>
+
+      <css-component></css-component>
     `;
   }
 }
