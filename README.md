@@ -11,12 +11,13 @@ example of naked webcomponent
 A component that load from external css a global style.
 **But preserve the shadowdom for scoped style**.
 I think can be usefull to create a library of webcomponent that have to ereditate the global style.
-*webcomponents-loader.js* is a polyfill for webcomponents
 
-*To boostrap it, the css files must be loaded before your webcomponent library*
+## webcomponents-loader.js is a polyfill for webcomponents
+webcomponents-loader.js is a polyfill for webcomponents
+
 *in index.html:*
 ```
-<!-- Load polyfills -->
+    <!-- Load polyfills -->
     <script src="libs/webcomponents-loader.js" defer> </script>
 
     <!-- Load component when polyfills are definitely ready -->
@@ -29,9 +30,6 @@ I think can be usefull to create a library of webcomponent that have to ereditat
             }
 
         WebComponents.waitFor(async () => {
-            const {loaderCss} = await import('./css/style.loader.js');
-            window.externalStyles=[...await loaderCss]
-
             await import('./main.js');
         });
     </script>
@@ -39,25 +37,18 @@ I think can be usefull to create a library of webcomponent that have to ereditat
 
 ## style.loader.js
 ```
-const fileUrls = ['./css/bootstrap.css'] 
+const styleRules = Object.values(document.styleSheets).reduce((obj,styleSheet)=>{
+   return obj = {...obj,...styleSheet.cssRules}
+   },{})
+   
+   let externalStyles =  Object.values(styleRules).map(rule=>rule.cssText).join('\n');
+   externalStyles = externalStyles.replace(/html {/g,":host {");
+   externalStyles = externalStyles.replace(/@import/g,"/@import");
+   externalStyles = [externalStyles];
 
-window.externalStyles = [];
-
-const loadCss = (url)=>new Promise((resolve,reject)=>{
-   fetch(url)
-   .then( r => r.text() )
-   .then( t => {
-      t = t.replace(/html {/g,":host {")
-      t = t.replace(/@import/g,"/@import")
-      resolve(t)
-   })
-})
-
-const cssPromises = fileUrls.map((url)=>loadCss(url))
-
-export const loaderCss = Promise.all(cssPromises)
+export {externalStyles};
 ```
-It simple save in a Array the files css (and replace body tag with :host). you can upload as many files css as you want
+It simple import global styleSheet from document Object (and replace body tag with :host). you can upload as many files css as you want
 
 # Use it
 ### Project setup
