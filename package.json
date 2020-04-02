@@ -13,6 +13,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "lit-css-global-scope": "^0.1.1",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {

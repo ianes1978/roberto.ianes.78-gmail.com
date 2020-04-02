@@ -1,15 +1,13 @@
 
 import { LitElement, html, css } from 'lit-element';
-import {externalStyles} from '../tools/style.loader'
+import {globalStyle} from 'lit-css-global-scope'
 
 
 
-
-class BsComponent extends LitElement {
+class cssComponent extends LitElement {
   static get styles() {
     return [
-      externalStyles
-      ,
+      globalStyle,
       css`
       .btn-secondary{
         background-color: violet
@@ -59,4 +57,4 @@ class BsComponent extends LitElement {
   }
 }
 
-customElements.define('css-component', BsComponent);
+customElements.define('css-component', cssComponent);

@@ -35,7 +35,8 @@ webcomponents-loader.js is a polyfill for webcomponents
     </script>
 ```
 
-## style.loader.js
+## lit-css-global-scope
+it is a simple module to import global style, you can replace with a simple script if you want:
 ```
 import { css } from 'lit-element';
 const styleRules = Object.values(document.styleSheets).reduce((obj,styleSheet)=>{
@@ -49,7 +50,7 @@ const styleRules = Object.values(document.styleSheets).reduce((obj,styleSheet)=>
 
 export {externalStyles};
 ```
-It simple import global styleSheet from document Object (and replace body tag with :host). you can upload as many files css as you want
+Import global styleSheet from document Object (and replace body tag with :host). you can upload as many files css as you want
 
 # Use it
 ### Project setup

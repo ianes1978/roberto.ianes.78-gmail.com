@@ -1,18 +1,14 @@
 
 import { LitElement, html, css } from 'lit-element';
-import {externalStyles} from '../tools/style.loader'
+import {globalStyle} from 'lit-css-global-scope'
 
 
 
 class BsComponent extends LitElement {
   static get styles() {
     return [
-      externalStyles,
+      globalStyle,
       css`
-      .btn-secondary{
-        background-color: violet
-      }
-   
       `
     ];
   }
@@ -37,7 +33,7 @@ class BsComponent extends LitElement {
         <div class="card-body">
         <button type="button" class="btn btn-primary">Primary</button>
         <button type="button" class="btn btn-success">Success</button>
-        <button type="button" class="btn btn-secondary">Secondary (style scoped)</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
       <button type="button" class="btn btn-danger">Danger</button>
       <button type="button" class="btn btn-warning">Warning</button>
       <button type="button" class="btn btn-info">Info</button>
