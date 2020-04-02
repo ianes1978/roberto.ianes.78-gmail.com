@@ -1,3 +1,4 @@
+import { css } from 'lit-element';
 const styleRules = Object.values(document.styleSheets).reduce((obj,styleSheet)=>{
    return obj = {...obj,...styleSheet.cssRules}
    },{})
@@ -5,6 +6,6 @@ const styleRules = Object.values(document.styleSheets).reduce((obj,styleSheet)=>
    let externalStyles =  Object.values(styleRules).map(rule=>rule.cssText).join('\n');
    externalStyles = externalStyles.replace(/html {/g,":host {");
    externalStyles = externalStyles.replace(/@import/g,"/@import");
-   externalStyles = [externalStyles];
+   externalStyles = css([externalStyles]);
 
 export {externalStyles};

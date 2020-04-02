@@ -7,7 +7,7 @@ import {externalStyles} from '../tools/style.loader'
 class BsComponent extends LitElement {
   static get styles() {
     return [
-      css(externalStyles),
+      externalStyles,
       css`
       .btn-secondary{
         background-color: violet
