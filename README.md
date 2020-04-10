@@ -1,4 +1,5 @@
 # lit-element webcomponent starter JS (+Bootstrap)
+version Javascript of [lit-element webcomponent starter TS](https://github.com/ianes1978/lit-element-webpack-starter-typescript)
 
 ## intro
 This is a simple starter of a webcomponent builded with lit-element library and webpack bundler.
